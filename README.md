@@ -1,30 +1,48 @@
-# React + TypeScript + Vite
+# Projeto Game Mania - Aplicação Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto é um simples protótipo de uma loja virtual de venda de jogos de video game. A aplicação foi desenvolvida usando **React, Typescript e React Query**.
 
-Currently, two official plugins are available:
+<h1 align="center">
+    <img src="./public/home.png" width="300"/>
+    <img src="./public/modal.png" width="300"/>
+</h1>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requisitos
 
-## Expanding the ESLint configuration
+Antes de iniciar, você deve ter o Node.js e o NPM instalados em sua máquina.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Instalando
 
-- Configure the top-level `parserOptions` property like this:
+Primeiro, você deve clonar o projeto na sua máquina, para isso você
+pode colar o seguinte comando em seu terminal
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+git clone https://github.com/karolineksn/ProjetoGameManiaFront.git
+cd frontend-game
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Para instalar as dependências, execute o seguinte comando:
+
+```bash
+npm install
+```
+
+Por fim, para executar o projeto basta rodar o seguinte:
+
+```bash
+npm run dev
+```
+
+## Compilando
+
+Para compilar a aplicação para produção, execute o seguinte comando:
+
+```bash
+npm run build
+```
+Isso irá gerar uma versão otimizada da aplicação na pasta `dist`.
+
+
+## Integração com Backend
+
+Para realizar a integração com o Backend, você pode clonar o [Projeto Game Mania - Back-end](https://github.com/karolineksn/ProjetoGameMania.git) e rodar localmente. 

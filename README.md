@@ -1,11 +1,15 @@
 # Projeto Game Mania - Aplicação Frontend
 
+
+> Projeto de conclusão da disciplina Software Product: Analysis, Specification, Project & Implementation do curso de graduação em Análise e Desenvolvimento de Sistemas da Faculdade Impacta.
+
+
 Este projeto é um simples protótipo de uma loja virtual de venda de jogos de video game. A aplicação foi desenvolvida usando **React, Typescript e React Query**.
 
-<h1 align="center">
+<!-- Adicionar imagens aqui <h1 align="center">
     <img src="./public/home.png" width="300"/>
     <img src="./public/modal.png" width="300"/>
-</h1>
+</h1> -->
 
 ## Requisitos
 

@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios, { AxiosPromise } from "axios"
-import { GameData } from '../interface/GameData';
+import { GameData } from '../Interface/GameData';
 
 const API_URL = 'http://localhost:8080';
 

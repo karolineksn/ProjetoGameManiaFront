@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useGameDataMutate } from '../../hooks/useGameDataMutate';
-import { GameData } from '../../interface/GameData';
+import { GameData } from '../../Interface/GameData';
 
 import "./modal.css";
 
@@ -46,11 +46,11 @@ export function CreateModal({ closeModal }: ModalProps){
     return(
         <div className="modal-overlay">
             <div className="modal-body">
-                <h2>Cadastre um novo item no cardápio</h2>
+                <h2>Cadastre um novo item para venda</h2>
                 <form className="input-container">
-                    <Input label="title" value={title} updateValue={setTitle}/>
-                    <Input label="price" value={price} updateValue={setPrice}/>
-                    <Input label="image" value={image} updateValue={setImage}/>
+                    <Input label="Título:" value={title} updateValue={setTitle}/>
+                    <Input label="Preço:" value={price} updateValue={setPrice}/>
+                    <Input label="Url da Imagem:" value={image} updateValue={setImage}/>
                 </form>
                 <button onClick={submit} className="btn-secondary">
                     {isLoading ? 'postando...' : 'postar'}

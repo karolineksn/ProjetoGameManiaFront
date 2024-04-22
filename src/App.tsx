@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { Card } from './components/card/card';
-import { GameData } from './interface/GameData';
+import { GameData } from './Interface/GameData'; 
 import { useGameData } from './hooks/useGameData';
 import { CreateModal } from './components/create-modal/create-modal';
 
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Menu</h1>
+      <h1>Jogos Disponíveis</h1>
       <div className="card-grid">
         {data?.map(gameData => 
           <Card
@@ -26,7 +26,7 @@ function App() {
         )}
       </div>
       {isModalOpen && <CreateModal closeModal={handleOpenModal}/>}
-      <button onClick={handleOpenModal}>novo</button>
+      <button onClick={handleOpenModal}>Cadastre um novo item</button>
     </div>
   )
 }

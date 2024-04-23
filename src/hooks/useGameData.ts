@@ -2,10 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosPromise } from "axios"
 import { GameData } from '../Interface/GameData';
 
-const API_URL = 'http://localhost:8080';
+export const API_URL = 'http://localhost:8080';
 
 const fetchData = async (): AxiosPromise<GameData[]> => {
-    const response = axios.get(API_URL + '/game');
+    const response = await axios.get(API_URL + '/game');
     return response;
 }
 

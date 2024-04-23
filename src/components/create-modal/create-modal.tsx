@@ -24,6 +24,7 @@ const Input = ({ label, value, updateValue }: InputProps) => {
 }
 
 export function CreateModal({ closeModal }: ModalProps){
+    const [id, setId] = useState("");
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0);
     const [image, setImage] = useState("");
@@ -31,6 +32,7 @@ export function CreateModal({ closeModal }: ModalProps){
 
     const submit = () => {
         const gameData: GameData = {
+            id,
             title, 
             price,
             image

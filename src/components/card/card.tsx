@@ -23,8 +23,9 @@ export function Card({id, price, title, image, onDelete, onMarkUnavailable} : Ca
         <div className="card">
             <img src={image}/>
             <h2>{title}</h2>
-            <p><b>Valor: </b>{price}</p>
+            <p><b>Preço: </b>{price}</p>
             <div className="card-buttons">
+                <button onClick={handleDelete}>Alterar</button>
                 <button onClick={handleDelete}>Deletar</button>
                 <button onClick={handleMarkUnavailable}>Marcar como Indisponível</button>
             </div>

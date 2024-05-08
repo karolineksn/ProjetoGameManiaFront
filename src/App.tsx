@@ -35,6 +35,16 @@ function App() {
     }
   };
 
+  const handleUpdateItem = async (id: number, newData: { price: number; title: string; image: string }) => {
+    try {
+        await axios.put(`${API_URL}/game/${id}`, newData);
+        console.log(`Item atualizado com ID: ${id}`);
+        // Atualize a lista de jogos após a atualização do item (se necessário)
+    } catch (error) {
+        console.error('Erro ao atualizar item:', error);
+    }
+};
+
   if (isLoading) return <div>Carregando...</div>;
   if (isError) return <div>Erro ao carregar dados</div>;
 
@@ -48,12 +58,13 @@ function App() {
         {data?.map((gameData) => (
           <Card
             key={gameData.id}
-            id={gameData.id}
+            id={gameData.id ?? 0}
             price={gameData.price}
             title={gameData.title}
             image={gameData.image}
             onDelete={handleDelete}
             onMarkUnavailable={handleMarkUnavailable}
+            onUpdateItem={handleUpdateItem}
           />
         ))}
       </div>

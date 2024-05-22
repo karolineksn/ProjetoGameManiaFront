@@ -1,6 +1,6 @@
 export interface GameData {
-    id?: number,
-    title: string,
-    image: string,
-    price: number
+    title: string;
+    price: number;
+    image: string;
+    available: boolean;
 }

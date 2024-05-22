@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import './card.css';
 
 interface CardProps {
-    id: number,
-    price: number,
-    title: string,
-    image: string,
-    onDelete: (id: number) => void; // Função para deletar um item
-    onMarkUnavailable: (id: number) => void; // Função para marcar como indisponível
-    onUpdateItem: (id: number, newData: { price: number; title: string; image: string }) => void; // Função para atualizar um item
+    id: number;
+    price: number;
+    title: string;
+    image: string;
+    onDelete: (id: number) => void;
+    onMarkUnavailable: (id: number) => void;
+    onUpdateItem: (id: number, newData: { price: number; title: string; image: string }) => void;
 }
 
 export function Card({ id, price, title, image, onDelete, onMarkUnavailable, onUpdateItem }: CardProps) {
@@ -37,22 +37,39 @@ export function Card({ id, price, title, image, onDelete, onMarkUnavailable, onU
             <img src={image} alt={title} />
             {isEditing ? (
                 <div>
-                    <input type="text" value={newData.title} onChange={(e) => setNewData({ ...newData, title: e.target.value })} />
-                    <input type="number" value={newData.price} onChange={(e) => setNewData({ ...newData, price: Number(e.target.value) })} />
-                    <input type="text" value={newData.image} onChange={(e) => setNewData({ ...newData, image: e.target.value })} />
-                    <button onClick={handleSave}>Salvar</button>
+                    <input
+                        type="text"
+                        value={newData.title}
+                        onChange={(e) => setNewData({ ...newData, title: e.target.value })}
+                    />
+                    <input
+                        type="number"
+                        value={newData.price}
+                        onChange={(e) => setNewData({ ...newData, price: Number(e.target.value) })}
+                    />
+                    <input
+                        type="text"
+                        value={newData.image}
+                        onChange={(e) => setNewData({ ...newData, image: e.target.value })}
+                    />
                 </div>
             ) : (
                 <div>
                     <h2>{title}</h2>
                     <p><b>Preço: </b>{price}</p>
-                    <div className="card-buttons">
+                </div>
+            )}
+            <div className="card-buttons">
+                {isEditing ? (
+                    <button onClick={handleSave}>Salvar</button>
+                ) : (
+                    <>
                         <button onClick={handleEdit}>Editar</button>
                         <button onClick={handleDelete}>Deletar</button>
                         <button onClick={handleMarkUnavailable}>Marcar como Indisponível</button>
-                    </div>
-                </div>
-            )}
+                    </>
+                )}
+            </div>
         </div>
     );
 }

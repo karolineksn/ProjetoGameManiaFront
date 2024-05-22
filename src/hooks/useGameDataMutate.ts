@@ -1,23 +1,30 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import axios, { AxiosPromise } from "axios"
+import { useMutation, useQueryClient } from 'react-query';
 import { GameData } from '../Interface/GameData';
 
-const API_URL = 'http://localhost:8080';
+const API_URL = 'http://localhost:8080/game';
 
-const postData = async (data: GameData): AxiosPromise<any> => {
-    const response = axios.post(API_URL + '/game', data);
-    return response;
-}
-
-export function useGameDataMutate(){
+export function useGameDataMutate() {
     const queryClient = useQueryClient();
-    const mutate = useMutation({
-        mutationFn: postData,
-        retry: 2,
-        onSuccess: () => {
-            queryClient.invalidateQueries(['game-data'])
-        }
-    })
 
-    return mutate;
+    const mutate = async (newGame: GameData) => {
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newGame),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to add new game');
+        }
+
+        return response.json();
+    };
+
+    return useMutation(mutate, {
+        onSuccess: () => {
+            queryClient.invalidateQueries('gameData');
+        },
+    });
 }

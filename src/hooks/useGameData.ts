@@ -1,23 +1,36 @@
-import { useQuery } from "@tanstack/react-query";
-import axios, { AxiosPromise } from "axios"
-import { GameData } from '../Interface/GameData';
+import { useState, useEffect } from 'react';
 
-export const API_URL = 'http://localhost:8080';
+const API_URL = 'http://localhost:8080/game';
 
-const fetchData = async (): AxiosPromise<GameData[]> => {
-    const response = await axios.get(API_URL + '/game');
-    return response;
+interface Game {
+    id: number;
+    title: string;
+    image: string;
+    price: number;
+    available: boolean;
 }
 
-export function useGameData(){
-    const query = useQuery({
-        queryFn: fetchData,
-        queryKey: ['game-data'],
-        retry: 2
-    })
+export function useGameData() {
+    const [data, setData] = useState<Game[] | null>(null);
+    const [loading, setLoading] = useState(true);
 
-    return {
-        ...query,
-        data: query.data?.data
-    }
+    useEffect(() => {
+        fetch(API_URL)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                setData(data);
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error('Error fetching game data:', error);
+                setLoading(false);
+            });
+    }, []);
+
+    return { data, loading, setData };
 }
